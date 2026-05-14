@@ -1,0 +1,20 @@
+# Core
+pandas>=2.0
+requests>=2.31
+numpy>=2.0
+
+# Literature mining
+arxiv>=2.0
+
+# Visualization
+matplotlib>=3.8
+seaborn>=0.13
+
+# Jupyter
+jupyter>=1.0
+ipywidgets>=8.0
+
+# Optional: LLM inference (Phase 3)
+# llama-cpp-python>=0.2  # Uncomment for local GGUF inference
+# dspy>=2.0             # Uncomment for DSPy RAG pipelines
+# outlines>=0.1         # Uncomment for structured LLM output
