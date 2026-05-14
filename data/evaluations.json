@@ -1,0 +1,82 @@
+[
+  {
+    "drug_name": "naltrexone",
+    "original_indication": "See literature for original use",
+    "proposed_mechanism": "Potential mechanism for Alzheimer disease based on literature analysis",
+    "evidence_from_literature": "No direct literature mentions in retrieved papers; Passes Lipinski's Rule of Five; Optimal molecular weight (341.4 Da); Favorable lipophilicity (LogP=1.9)",
+    "drug_likeness_assessment": "Drug-like",
+    "confidence_score": 7,
+    "key_risks": [
+      "Requires experimental validation",
+      "Off-target effects unknown",
+      "Dosing for new indication TBD"
+    ],
+    "recommended_next_steps": [
+      "In vitro validation in disease-relevant cell models",
+      "In vivo efficacy studies in animal models",
+      "PK/PD modeling for new indication",
+      "Literature deep-dive on mechanism of action"
+    ],
+    "overall_recommendation": "Promising \u2014 needs validation"
+  },
+  {
+    "drug_name": "metformin",
+    "original_indication": "See literature for original use",
+    "proposed_mechanism": "Potential mechanism for Alzheimer disease based on literature analysis",
+    "evidence_from_literature": "No direct literature mentions in retrieved papers; Passes Lipinski's Rule of Five; Acceptable molecular weight (129.16 Da); Suboptimal lipophilicity (LogP=-1.3)",
+    "drug_likeness_assessment": "Drug-like",
+    "confidence_score": 4,
+    "key_risks": [
+      "Requires experimental validation",
+      "Off-target effects unknown",
+      "Dosing for new indication TBD"
+    ],
+    "recommended_next_steps": [
+      "In vitro validation in disease-relevant cell models",
+      "In vivo efficacy studies in animal models",
+      "PK/PD modeling for new indication",
+      "Literature deep-dive on mechanism of action"
+    ],
+    "overall_recommendation": "Moderate potential"
+  },
+  {
+    "drug_name": "lithium",
+    "original_indication": "See literature for original use",
+    "proposed_mechanism": "Potential mechanism for Alzheimer disease based on literature analysis",
+    "evidence_from_literature": "No direct literature mentions in retrieved papers; Passes Lipinski's Rule of Five; Extreme molecular weight (7.0 Da); Suboptimal lipophilicity (LogP=nan)",
+    "drug_likeness_assessment": "Drug-like",
+    "confidence_score": 3,
+    "key_risks": [
+      "Requires experimental validation",
+      "Off-target effects unknown",
+      "Dosing for new indication TBD"
+    ],
+    "recommended_next_steps": [
+      "In vitro validation in disease-relevant cell models",
+      "In vivo efficacy studies in animal models",
+      "PK/PD modeling for new indication",
+      "Literature deep-dive on mechanism of action"
+    ],
+    "overall_recommendation": "Weak candidate \u2014 not recommended"
+  },
+  {
+    "drug_name": "rapamycin",
+    "original_indication": "See literature for original use",
+    "proposed_mechanism": "Potential mechanism for Alzheimer disease based on literature analysis",
+    "evidence_from_literature": "No direct literature mentions in retrieved papers; Poor drug-like properties (3 Lipinski violations); Extreme molecular weight (914.2 Da); Suboptimal lipophilicity (LogP=6.0)",
+    "drug_likeness_assessment": "3 Lipinski violation(s)",
+    "confidence_score": 0,
+    "key_risks": [
+      "Requires experimental validation",
+      "Off-target effects unknown",
+      "Dosing for new indication TBD"
+    ],
+    "recommended_next_steps": [
+      "In vitro validation in disease-relevant cell models",
+      "In vivo efficacy studies in animal models",
+      "PK/PD modeling for new indication",
+      "Literature deep-dive on mechanism of action"
+    ],
+    "overall_recommendation": "Weak candidate \u2014 not recommended"
+  }
+]
