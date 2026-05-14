@@ -4,23 +4,35 @@ Module 3: LLM Reasoning Engine
 
 Takes the knowledge base (Module 1) + molecular properties (Module 2) as context,
 uses structured output to generate ranked candidate evaluations.
+
+Supports four backends, auto-detected from environment (see .env.example):
+  claude       — Anthropic direct (anthropic SDK, output_config.format)
+  openrouter   — OpenRouter (openai SDK, json_schema response_format)
+  ollama       — Local Ollama (openai SDK pointed at localhost)
+  heuristic    — Built-in deterministic scorer (no LLM, no cost)
 """
 
 import json
+import os
 from pathlib import Path
 from typing import Optional
+
+from dotenv import load_dotenv
+
+load_dotenv(Path(__file__).parent.parent / ".env")
 
 # ── Structured Output Schema ──────────────────────────────────────────────
 
 DRUG_EVALUATION_SCHEMA = {
     "type": "object",
+    "additionalProperties": False,
     "properties": {
         "drug_name": {"type": "string"},
         "original_indication": {"type": "string"},
         "proposed_mechanism": {"type": "string"},
         "evidence_from_literature": {"type": "string"},
         "drug_likeness_assessment": {"type": "string"},
-        "confidence_score": {"type": "number", "minimum": 0, "maximum": 10},
+        "confidence_score": {"type": "number"},
         "key_risks": {
             "type": "array",
             "items": {"type": "string"}
@@ -34,8 +46,12 @@ DRUG_EVALUATION_SCHEMA = {
             "enum": ["Strong candidate", "Promising — needs validation", "Moderate potential", "Weak candidate — not recommended"]
         }
     },
-    "required": ["drug_name", "original_indication", "proposed_mechanism", 
-                 "confidence_score", "overall_recommendation"]
+    "required": [
+        "drug_name", "original_indication", "proposed_mechanism",
+        "evidence_from_literature", "drug_likeness_assessment",
+        "confidence_score", "key_risks", "recommended_next_steps",
+        "overall_recommendation",
+    ],
 }
 
 FINAL_REPORT_SCHEMA = {
@@ -241,6 +257,101 @@ def generate_evaluation_heuristic(
     }
 
 
+# ── Backend Dispatch ───────────────────────────────────────────────────────
+
+def _detect_backend() -> str:
+    """Pick a backend based on environment configuration (see .env.example)."""
+    explicit = os.getenv("LLM_BACKEND", "").strip().lower()
+    if explicit:
+        return explicit
+    if os.getenv("ANTHROPIC_API_KEY"):
+        return "claude"
+    if os.getenv("OPENROUTER_API_KEY"):
+        return "openrouter"
+    if os.getenv("OLLAMA_HOST"):
+        return "ollama"
+    return "heuristic"
+
+
+def _ollama_base_url() -> str:
+    host = os.environ["OLLAMA_HOST"].rstrip("/")
+    if not host.endswith("/v1"):
+        host += "/v1"
+    return host
+
+
+def _call_claude(prompt: str) -> dict:
+    import anthropic
+    client = anthropic.Anthropic()
+    response = client.messages.create(
+        model=os.getenv("CLAUDE_MODEL", "claude-opus-4-7"),
+        max_tokens=1024,
+        output_config={
+            "format": {"type": "json_schema", "schema": DRUG_EVALUATION_SCHEMA}
+        },
+        messages=[{"role": "user", "content": prompt}],
+    )
+    text = next(b.text for b in response.content if b.type == "text")
+    return json.loads(text)
+
+
+def _call_openai_compatible(prompt: str, base_url: str, api_key: str, model: str) -> dict:
+    from openai import OpenAI
+    client = OpenAI(base_url=base_url, api_key=api_key)
+    response = client.chat.completions.create(
+        model=model,
+        messages=[{"role": "user", "content": prompt}],
+        response_format={
+            "type": "json_schema",
+            "json_schema": {
+                "name": "drug_evaluation",
+                "schema": DRUG_EVALUATION_SCHEMA,
+                "strict": True,
+            },
+        },
+    )
+    return json.loads(response.choices[0].message.content)
+
+
+def generate_evaluation(
+    drug_name: str,
+    kb: dict,
+    mol_data: dict,
+    disease: str,
+) -> dict:
+    """Dispatch to the configured backend; fall back to the heuristic on failure."""
+    backend = _detect_backend()
+
+    if backend == "heuristic":
+        return generate_evaluation_heuristic(drug_name, kb, mol_data, disease)
+
+    ctx = build_candidate_context(drug_name, kb, mol_data, disease)
+    prompt = CANDIDATE_EVALUATION_PROMPT.format(**ctx)
+
+    try:
+        if backend == "claude":
+            return _call_claude(prompt)
+        if backend == "openrouter":
+            return _call_openai_compatible(
+                prompt,
+                base_url="https://openrouter.ai/api/v1",
+                api_key=os.environ["OPENROUTER_API_KEY"],
+                model=os.getenv("OPENROUTER_MODEL", "meta-llama/llama-3.3-70b-instruct"),
+            )
+        if backend == "ollama":
+            return _call_openai_compatible(
+                prompt,
+                base_url=_ollama_base_url(),
+                api_key="ollama",
+                model=os.getenv("OLLAMA_MODEL", "llama3.2"),
+            )
+        print(f"   ⚠️  Unknown LLM_BACKEND={backend!r}, using heuristic")
+    except Exception as e:
+        print(f"   ⚠️  {backend} backend failed ({type(e).__name__}: {e}); using heuristic")
+
+    return generate_evaluation_heuristic(drug_name, kb, mol_data, disease)
+
+
 # ── Main Pipeline ──────────────────────────────────────────────────────────
 
 def run_llm_reasoning(
@@ -262,21 +373,23 @@ def run_llm_reasoning(
     """
     import pandas as pd
     
+    backend = _detect_backend()
     print(f"\n{'='*60}")
     print(f"  DrugDiscovery.ai — LLM Reasoning Engine")
     print(f"  Disease: {disease}")
+    print(f"  Backend: {backend}")
     print(f"{'='*60}\n")
-    
+
     # Filter to repurposing candidates only
     candidates = mol_df[mol_df["status"] == "repurposing_candidate"] if "status" in mol_df.columns else mol_df
-    
+
     evaluations = []
     for _, row in candidates.iterrows():
         drug_name = row["name"]
         print(f"  Evaluating: {drug_name}...")
-        
+
         mol_data = row.to_dict()
-        evaluation = generate_evaluation_heuristic(drug_name, kb, mol_data, disease)
+        evaluation = generate_evaluation(drug_name, kb, mol_data, disease)
         evaluations.append(evaluation)
         
         print(f"    Score: {evaluation['confidence_score']}/10 — {evaluation['overall_recommendation']}")

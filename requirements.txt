@@ -14,7 +14,7 @@ seaborn>=0.13
 jupyter>=1.0
 ipywidgets>=8.0
 
-# Optional: LLM inference (Phase 3)
-# llama-cpp-python>=0.2  # Uncomment for local GGUF inference
-# dspy>=2.0             # Uncomment for DSPy RAG pipelines
-# outlines>=0.1         # Uncomment for structured LLM output
+# LLM backends (Module 3 — drug evaluation)
+python-dotenv>=1.0
+anthropic>=0.45      # Claude direct
+openai>=1.50         # OpenRouter and Ollama (both speak OpenAI-compatible)
