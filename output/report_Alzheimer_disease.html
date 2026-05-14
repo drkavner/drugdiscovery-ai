@@ -178,23 +178,23 @@
     <h2>📋 Executive Summary</h2>
     <div class="grid-2">
         <div class="stat-box">
-            <div class="number">0</div>
+            <div class="number">10</div>
             <div class="label">Papers Analyzed</div>
         </div>
         <div class="stat-box">
-            <div class="number">4</div>
+            <div class="number">5</div>
             <div class="label">Candidates Evaluated</div>
         </div>
         <div class="stat-box">
-            <div class="number">3</div>
+            <div class="number">5</div>
             <div class="label">Drug-like Candidates</div>
         </div>
         <div class="stat-box">
-            <div class="number">7</div>
+            <div class="number">8</div>
             <div class="label">Top Confidence Score</div>
         </div>
     </div>
-    <p style="margin-top: 15px;">This analysis evaluated 4 drug repurposing candidates for Alzheimer disease. 3 candidates pass Lipinski's Rule of Five for drug-likeness. The top-ranked candidate is <strong>Naltrexone</strong> with a confidence score of 7/10. These results should be validated with experimental studies.</p>
+    <p style="margin-top: 15px;">This analysis evaluated 5 drug repurposing candidates for Alzheimer disease. 5 candidates pass Lipinski's Rule of Five for drug-likeness. The top-ranked candidate is <strong>Dexamethasone</strong> with a confidence score of 8/10. These results should be validated with experimental studies.</p>
 </div>
 
 <!-- Literature Findings -->
@@ -206,12 +206,25 @@
             <tr><th>Drug</th><th>Paper Count</th><th>Relevance</th></tr>
         </thead>
         <tbody>
-            
+            <tr><td><strong>Dexamethasone</strong></td><td>1</td><td><span class="badge badge-info">Low</span></td></tr>
+<tr><td><strong>Methotrexate</strong></td><td>1</td><td><span class="badge badge-info">Low</span></td></tr>
+<tr><td><strong>Quercetin</strong></td><td>1</td><td><span class="badge badge-info">Low</span></td></tr>
+<tr><td><strong>Resveratrol</strong></td><td>1</td><td><span class="badge badge-info">Low</span></td></tr>
+<tr><td><strong>Nicotine</strong></td><td>1</td><td><span class="badge badge-info">Low</span></td></tr>
+
         </tbody>
     </table>
     
     <h3>Key Findings from Literature</h3>
-    <p><em>No specific findings extracted.</em></p>
+    <div class="finding">The process is also known as drug repurposing or drug repositioning.</div>
+<div class="finding">Machine learning methods exhibited huge potential in automating drug repurposing.</div>
+<div class="finding">Thorough empirical studies are conducted to validate the effectiveness of the proposed DrugCLIP method.</div>
+<div class="finding">Many existing computational drug repurposing methods rely on preclinical data (e.g., chemical structures, drug targets), resulting in translational problems for clinical trials.</div>
+<div class="finding">In this study, we propose a clinical connectivity map framework for drug repurposing by leveraging laboratory tests to analyze complementarity between drugs and diseases.</div>
+<div class="finding">Experimental results demonstrate the effectiveness of the proposed framework and suggest that our method could help identify drug repurposing opportunities, which will benefit patients by offering more effective and safer treatments.</div>
+<div class="finding">Drug repurposing offers a more time- and cost-effective alternative.</div>
+<div class="finding">In this study, we present a novel, disease-specific hypergraph representation learning technique to derive contextual embeddings of biological pathways of various lengths but that all start at any given drug and all end at the disease of interest.</div>
+
 </div>
 
 <!-- Molecular Properties -->
@@ -225,10 +238,11 @@
             </tr>
         </thead>
         <tbody>
-            <tr><td><strong>Metformin</strong></td><td>129.16</td><td>-1.3</td><td>3</td><td>1</td><td><span class="badge badge-success">✓ Pass</span></td><td><span class="badge badge-info">Candidate</span></td></tr>
-<tr><td><strong>Rapamycin</strong></td><td>914.2</td><td>6.0</td><td>3</td><td>13</td><td><span class="badge badge-danger">✗ 3 violations</span></td><td><span class="badge badge-info">Candidate</span></td></tr>
-<tr><td><strong>Lithium</strong></td><td>7.0</td><td>nan</td><td>0</td><td>0</td><td><span class="badge badge-success">✓ Pass</span></td><td><span class="badge badge-info">Candidate</span></td></tr>
-<tr><td><strong>Naltrexone</strong></td><td>341.4</td><td>1.9</td><td>2</td><td>5</td><td><span class="badge badge-success">✓ Pass</span></td><td><span class="badge badge-info">Candidate</span></td></tr>
+            <tr><td><strong>Dexamethasone</strong></td><td>392.5</td><td>1.9</td><td>3</td><td>6</td><td><span class="badge badge-success">✓ Pass</span></td><td><span class="badge badge-info">Candidate</span></td></tr>
+<tr><td><strong>Methotrexate</strong></td><td>454.4</td><td>-1.8</td><td>5</td><td>12</td><td><span class="badge badge-success">✓ Pass</span></td><td><span class="badge badge-info">Candidate</span></td></tr>
+<tr><td><strong>Quercetin</strong></td><td>302.23</td><td>1.5</td><td>5</td><td>7</td><td><span class="badge badge-success">✓ Pass</span></td><td><span class="badge badge-info">Candidate</span></td></tr>
+<tr><td><strong>Resveratrol</strong></td><td>228.24</td><td>3.1</td><td>3</td><td>3</td><td><span class="badge badge-success">✓ Pass</span></td><td><span class="badge badge-info">Candidate</span></td></tr>
+<tr><td><strong>Nicotine</strong></td><td>162.23</td><td>1.2</td><td>0</td><td>2</td><td><span class="badge badge-success">✓ Pass</span></td><td><span class="badge badge-info">Candidate</span></td></tr>
 <tr><td><strong>Donepezil</strong></td><td>379.5</td><td>4.3</td><td>0</td><td>4</td><td><span class="badge badge-success">✓ Pass</span></td><td><span class="badge badge-success">Approved</span></td></tr>
 <tr><td><strong>Rivastigmine</strong></td><td>250.34</td><td>2.3</td><td>0</td><td>3</td><td><span class="badge badge-success">✓ Pass</span></td><td><span class="badge badge-success">Approved</span></td></tr>
 <tr><td><strong>Memantine</strong></td><td>179.3</td><td>3.3</td><td>1</td><td>1</td><td><span class="badge badge-success">✓ Pass</span></td><td><span class="badge badge-success">Approved</span></td></tr>
@@ -248,85 +262,108 @@
     <h2>🤖 AI Candidate Evaluations</h2>
     
         <div class="candidate-card">
-            <h4>#1 Naltrexone 
+            <h4>#1 Dexamethasone 
+                <span class="badge badge-success">Strong candidate</span>
+                <span style="float:right; font-size:0.9em;">
+                    Score: 8/10
+                    <span class="score-bar"><span class="score-fill" style="width:80%"></span></span>
+                </span>
+            </h4>
+            <p><strong>Original indication:</strong> See literature for original use</p>
+            <p><strong>Proposed mechanism:</strong> Potential mechanism for Alzheimer disease based on literature analysis</p>
+            <p><strong>Evidence:</strong> Limited literature evidence (1 paper); Passes Lipinski's Rule of Five; Optimal molecular weight (392.5 Da); Favorable lipophilicity (LogP=1.9)</p>
+            <div class="grid-2" style="margin-top:10px;">
+                <div>
+                    <h4>⚠️ Key Risks</h4>
+                    <ul style="margin-left:20px; font-size:0.9em;"><li>Requires experimental validation</li><li>Off-target effects unknown</li><li>Dosing for new indication TBD</li></ul>
+                </div>
+                <div>
+                    <h4>📋 Next Steps</h4>
+                    <ul style="margin-left:20px; font-size:0.9em;"><li>In vitro validation in disease-relevant cell models</li><li>In vivo efficacy studies in animal models</li><li>PK/PD modeling for new indication</li><li>Literature deep-dive on mechanism of action</li></ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="candidate-card">
+            <h4>#2 Quercetin 
+                <span class="badge badge-success">Strong candidate</span>
+                <span style="float:right; font-size:0.9em;">
+                    Score: 8/10
+                    <span class="score-bar"><span class="score-fill" style="width:80%"></span></span>
+                </span>
+            </h4>
+            <p><strong>Original indication:</strong> See literature for original use</p>
+            <p><strong>Proposed mechanism:</strong> Potential mechanism for Alzheimer disease based on literature analysis</p>
+            <p><strong>Evidence:</strong> Limited literature evidence (1 paper); Passes Lipinski's Rule of Five; Optimal molecular weight (302.23 Da); Favorable lipophilicity (LogP=1.5)</p>
+            <div class="grid-2" style="margin-top:10px;">
+                <div>
+                    <h4>⚠️ Key Risks</h4>
+                    <ul style="margin-left:20px; font-size:0.9em;"><li>Requires experimental validation</li><li>Off-target effects unknown</li><li>Dosing for new indication TBD</li></ul>
+                </div>
+                <div>
+                    <h4>📋 Next Steps</h4>
+                    <ul style="margin-left:20px; font-size:0.9em;"><li>In vitro validation in disease-relevant cell models</li><li>In vivo efficacy studies in animal models</li><li>PK/PD modeling for new indication</li><li>Literature deep-dive on mechanism of action</li></ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="candidate-card">
+            <h4>#3 Resveratrol 
+                <span class="badge badge-success">Strong candidate</span>
+                <span style="float:right; font-size:0.9em;">
+                    Score: 8/10
+                    <span class="score-bar"><span class="score-fill" style="width:80%"></span></span>
+                </span>
+            </h4>
+            <p><strong>Original indication:</strong> See literature for original use</p>
+            <p><strong>Proposed mechanism:</strong> Potential mechanism for Alzheimer disease based on literature analysis</p>
+            <p><strong>Evidence:</strong> Limited literature evidence (1 paper); Passes Lipinski's Rule of Five; Optimal molecular weight (228.24 Da); Favorable lipophilicity (LogP=3.1)</p>
+            <div class="grid-2" style="margin-top:10px;">
+                <div>
+                    <h4>⚠️ Key Risks</h4>
+                    <ul style="margin-left:20px; font-size:0.9em;"><li>Requires experimental validation</li><li>Off-target effects unknown</li><li>Dosing for new indication TBD</li></ul>
+                </div>
+                <div>
+                    <h4>📋 Next Steps</h4>
+                    <ul style="margin-left:20px; font-size:0.9em;"><li>In vitro validation in disease-relevant cell models</li><li>In vivo efficacy studies in animal models</li><li>PK/PD modeling for new indication</li><li>Literature deep-dive on mechanism of action</li></ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="candidate-card">
+            <h4>#4 Nicotine 
+                <span class="badge badge-success">Strong candidate</span>
+                <span style="float:right; font-size:0.9em;">
+                    Score: 8/10
+                    <span class="score-bar"><span class="score-fill" style="width:80%"></span></span>
+                </span>
+            </h4>
+            <p><strong>Original indication:</strong> See literature for original use</p>
+            <p><strong>Proposed mechanism:</strong> Potential mechanism for Alzheimer disease based on literature analysis</p>
+            <p><strong>Evidence:</strong> Limited literature evidence (1 paper); Passes Lipinski's Rule of Five; Optimal molecular weight (162.23 Da); Favorable lipophilicity (LogP=1.2)</p>
+            <div class="grid-2" style="margin-top:10px;">
+                <div>
+                    <h4>⚠️ Key Risks</h4>
+                    <ul style="margin-left:20px; font-size:0.9em;"><li>Requires experimental validation</li><li>Off-target effects unknown</li><li>Dosing for new indication TBD</li></ul>
+                </div>
+                <div>
+                    <h4>📋 Next Steps</h4>
+                    <ul style="margin-left:20px; font-size:0.9em;"><li>In vitro validation in disease-relevant cell models</li><li>In vivo efficacy studies in animal models</li><li>PK/PD modeling for new indication</li><li>Literature deep-dive on mechanism of action</li></ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="candidate-card">
+            <h4>#5 Methotrexate 
                 <span class="badge badge-warning">Promising — needs validation</span>
                 <span style="float:right; font-size:0.9em;">
-                    Score: 7/10
-                    <span class="score-bar"><span class="score-fill" style="width:70%"></span></span>
+                    Score: 6/10
+                    <span class="score-bar"><span class="score-fill" style="width:60%"></span></span>
                 </span>
             </h4>
             <p><strong>Original indication:</strong> See literature for original use</p>
             <p><strong>Proposed mechanism:</strong> Potential mechanism for Alzheimer disease based on literature analysis</p>
-            <p><strong>Evidence:</strong> No direct literature mentions in retrieved papers; Passes Lipinski's Rule of Five; Optimal molecular weight (341.4 Da); Favorable lipophilicity (LogP=1.9)</p>
-            <div class="grid-2" style="margin-top:10px;">
-                <div>
-                    <h4>⚠️ Key Risks</h4>
-                    <ul style="margin-left:20px; font-size:0.9em;"><li>Requires experimental validation</li><li>Off-target effects unknown</li><li>Dosing for new indication TBD</li></ul>
-                </div>
-                <div>
-                    <h4>📋 Next Steps</h4>
-                    <ul style="margin-left:20px; font-size:0.9em;"><li>In vitro validation in disease-relevant cell models</li><li>In vivo efficacy studies in animal models</li><li>PK/PD modeling for new indication</li><li>Literature deep-dive on mechanism of action</li></ul>
-                </div>
-            </div>
-        </div>
-        
-        <div class="candidate-card">
-            <h4>#2 Metformin 
-                <span class="badge badge-info">Moderate potential</span>
-                <span style="float:right; font-size:0.9em;">
-                    Score: 4/10
-                    <span class="score-bar"><span class="score-fill" style="width:40%"></span></span>
-                </span>
-            </h4>
-            <p><strong>Original indication:</strong> See literature for original use</p>
-            <p><strong>Proposed mechanism:</strong> Potential mechanism for Alzheimer disease based on literature analysis</p>
-            <p><strong>Evidence:</strong> No direct literature mentions in retrieved papers; Passes Lipinski's Rule of Five; Acceptable molecular weight (129.16 Da); Suboptimal lipophilicity (LogP=-1.3)</p>
-            <div class="grid-2" style="margin-top:10px;">
-                <div>
-                    <h4>⚠️ Key Risks</h4>
-                    <ul style="margin-left:20px; font-size:0.9em;"><li>Requires experimental validation</li><li>Off-target effects unknown</li><li>Dosing for new indication TBD</li></ul>
-                </div>
-                <div>
-                    <h4>📋 Next Steps</h4>
-                    <ul style="margin-left:20px; font-size:0.9em;"><li>In vitro validation in disease-relevant cell models</li><li>In vivo efficacy studies in animal models</li><li>PK/PD modeling for new indication</li><li>Literature deep-dive on mechanism of action</li></ul>
-                </div>
-            </div>
-        </div>
-        
-        <div class="candidate-card">
-            <h4>#3 Lithium 
-                <span class="badge badge-danger">Weak candidate — not recommended</span>
-                <span style="float:right; font-size:0.9em;">
-                    Score: 3/10
-                    <span class="score-bar"><span class="score-fill" style="width:30%"></span></span>
-                </span>
-            </h4>
-            <p><strong>Original indication:</strong> See literature for original use</p>
-            <p><strong>Proposed mechanism:</strong> Potential mechanism for Alzheimer disease based on literature analysis</p>
-            <p><strong>Evidence:</strong> No direct literature mentions in retrieved papers; Passes Lipinski's Rule of Five; Extreme molecular weight (7.0 Da); Suboptimal lipophilicity (LogP=nan)</p>
-            <div class="grid-2" style="margin-top:10px;">
-                <div>
-                    <h4>⚠️ Key Risks</h4>
-                    <ul style="margin-left:20px; font-size:0.9em;"><li>Requires experimental validation</li><li>Off-target effects unknown</li><li>Dosing for new indication TBD</li></ul>
-                </div>
-                <div>
-                    <h4>📋 Next Steps</h4>
-                    <ul style="margin-left:20px; font-size:0.9em;"><li>In vitro validation in disease-relevant cell models</li><li>In vivo efficacy studies in animal models</li><li>PK/PD modeling for new indication</li><li>Literature deep-dive on mechanism of action</li></ul>
-                </div>
-            </div>
-        </div>
-        
-        <div class="candidate-card">
-            <h4>#4 Rapamycin 
-                <span class="badge badge-danger">Weak candidate — not recommended</span>
-                <span style="float:right; font-size:0.9em;">
-                    Score: 0/10
-                    <span class="score-bar"><span class="score-fill" style="width:0%"></span></span>
-                </span>
-            </h4>
-            <p><strong>Original indication:</strong> See literature for original use</p>
-            <p><strong>Proposed mechanism:</strong> Potential mechanism for Alzheimer disease based on literature analysis</p>
-            <p><strong>Evidence:</strong> No direct literature mentions in retrieved papers; Poor drug-like properties (3 Lipinski violations); Extreme molecular weight (914.2 Da); Suboptimal lipophilicity (LogP=6.0)</p>
+            <p><strong>Evidence:</strong> Limited literature evidence (1 paper); Passes Lipinski's Rule of Five; Optimal molecular weight (454.4 Da); Suboptimal lipophilicity (LogP=-1.8)</p>
             <div class="grid-2" style="margin-top:10px;">
                 <div>
                     <h4>⚠️ Key Risks</h4>
